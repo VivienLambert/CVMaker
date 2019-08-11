@@ -7,6 +7,7 @@ function setStep0() {
 	html +=	'Code postal <input id="postalCode" class="step0" type="text" value ="' + (person ? person.postalCode : "") + '"></input><br>';
 	html +=	'Ville<input id="city" class="step0" type="text" value ="' + (person ? person.city : "") + '"></input><br>';
 	html +=	'Numéro de téléphone<input id="phone" class="step0" type="text" value ="' + (person ? person.phone : "") + '"></input><br>';
+	html +=	'Adresse e-mail<input id="mail" class="step0" type="text" value ="' + (person ? person.mail : "") + '"></input><br>';
 	html +=	'LinkedIn<input id="linkedIn" class="step0" type="text" value ="' + (person ? person.linkedIn : "") + '"></input><br>';
 	html +=	'Poste désiré<input id="application" class="step0" type="text" value ="' + (person ? person.application : "") + '"></input><br>';
 	return (html);
@@ -14,7 +15,7 @@ function setStep0() {
 
 function getStep0() {
 	return new Person(getValue("name"), getValue("firstName"), getValue("driving"), getValue("address"),
-					getValue("postalCode"), getValue("city"), getValue("phone"), getValue("linkedIn"),getValue("application"));
+					getValue("postalCode"), getValue("city"), getValue("phone"), getValue("mail"), getValue("linkedIn"),getValue("application"));
 }
 
 function updateStep0() {
@@ -25,6 +26,7 @@ function updateStep0() {
 	person.postalCode = getValue("postalCode");
 	person.city = getValue("city");
 	person.phone = getValue("phone");
+	person.mail = getValue("mail");
 	person.linkedIn = getValue("linkedIn");
 	person.application = getValue("application");
 }

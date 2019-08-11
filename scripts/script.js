@@ -29,14 +29,15 @@ function Exp(startDate, endDate, employer, job, skills)
 	this.skills = skills;
 }
 
-function Person(name, firstName, driving, address, postalCode, city, phone, linkedIn, application) {
+function Person(name, firstName, driving, address, postalCode, city, phone, mail, linkedIn, application) {
 	this.name = name;
 	this.firstName = firstName;
 	this.driving = driving;
-	this.phone = phone;
 	this.address = address;
 	this.postalCode = postalCode;
 	this.city = city;
+	this.phone = phone;
+	this.mail = mail;
 	this.linkedIn = linkedIn;
 	this.application = application;
 	this.formations = [];
@@ -86,16 +87,6 @@ function Person(name, firstName, driving, address, postalCode, city, phone, link
 		}
 		return ret;
 	}
-}
-
-function printCV() {
-	savePrevious();
-	page = document.getElementById("page");
-	html = person.name + person.firstName + person.driving + person.phone + person.formations[0].formation;
-	html += '<div id="buttons">';
-	html += '<br><button id="previous" onclick="setForm(' + (stepMax) + ');">⇦</button>';
-	html += '</div>';
-	page.innerHTML = html;
 }
 
 page = document.getElementById("page");

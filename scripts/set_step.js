@@ -18,6 +18,8 @@ function showDiv(id, num, bool) {
 }
 
 function savePrevious(){
+	if (document.getElementById("CV"))
+		return;
 	if (document.getElementById("name")) {
 		if (!person)
 			person = getStep0();
@@ -41,6 +43,8 @@ function savePrevious(){
 function setForm(step) {
 	html = "";
 	savePrevious();
+	style = document.getElementById("style");
+	style.href = "style/style.css";
 	switch (step) {
 		case 0:
 			html = setStep0();

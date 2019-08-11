@@ -1,0 +1,15 @@
+#CV {
+	width: 21cm;
+	height: 30cm;
+	background-color: red;
+	display: flex;
+}
+#ID {
+	height: 100%;
+	width: 40%;
+	background-color: blue;
+}
+.icon {
+	width : 1cm;
+	height: 1cm;
+}
