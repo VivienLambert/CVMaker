@@ -1,29 +1,37 @@
 function setStep3() {
-	html = "<h1>Quelles sont vos compétences ?</h1>";
-	html += "<h3>Atouts</h3>";
-	for (i = 0; i < 4; i++) {
-		html += '<div id="' + '">'
-		html +=	'<span>Date de début</span><input id="startDate' + i + '" class="step2" name="startDate" type="text" value="' + (person.exp ? (person.exp[i] ? person.exp[i].startDate : "") : "") + '"></input><br>';
-		html +=	'<span>Date de fin</span><input id="endDate' + i + '" class="step2" name="endDate" type="text" value="' + (person.exp ? (person.exp[i] ? person.exp[i].endDate : "") : "") + '"></input><br>';
-		html +=	'<span>Employeur</span><input id="employer' + i + '" class="step2" name="employer" type="text" value="' + (person.exp ? (person.exp[i] ? person.exp[i].employer : "") : "") + '"></input><br>';
-		html +=	'<span>Intitulé du poste</span><input id="job' + i + '" class="step2" name="job" type="text" value="' + (person.exp ? (person.exp[i] ? person.exp[i].job : "") : "") + '"></input><br>';
-		html +=	'<span>Compétences mises en place/mission</span> (100 caractères) <textarea rows="2" cols="50" maxlength="100" id="skills' + i + '" class="step1" name="endDate">' + (person.exp ? (person.exp[i] ? person.exp[i].skills : "") : "") + '</textarea><br>';
+	var skillsCount = person.hasSkill();
+	var html = "<h1>Quelles sont vos compétences ?</h1>";
+
+	for (var i = 0; i < catNum; i++) {
+		html += '<div class="block" id="block' + i + '" style="display:' + (i <= skillsCount[0] ? "block" : "none") + ';">'
+		html +=	'<h3>Catégorie</h3><input id="cat'
+				+ i + '" class="step3" type="text" value="' + person.skillsCat[i].catName
+				+ '"></input><br>';
+		for (var j = 0; j < skillsNum; j++) {
+			html += '<div class="underBlock" id="underBlock' + i + j + '" style="display:' + (j <= skillsCount[1][i] ? "block" : "none") + ';">'
+			html +=	'<span>Compétence</span><input id="skill' + i + j
+					+ '" class="step3" type="text" value="' + person.skillsCat[i].skills[j].skillName
+					+ '"></input><br>';
+			html +=	'<span>Niveau</span><input id="level' + i + j
+					+ '" class="step3" type="range" min="1" max="9" value="' + person.skillsCat[i].skills[j].level
+					+ '"></input><br>';
+			if (j < skillsNum - 1 && i >= skillsCount[1][i])
+				html += '<button class="plusTxt" id="plus' + i + (j + 1) + '" onclick="showDiv(\'underBlock\', \'' + i + (j + 1) + '\', true);">Nouvelle compétence</button>';
+			html += '</div>'
+		}
+		if (i < catNum - 1 && (i >= skillsCount[0]))
+			html += '<button class="plusTxt newButtonColor newCateg" id="plus' + (i + 1) + '" onclick="showDiv(\'block\',' + (i + 1) + ', true);">Nouvelle catégorie</button>';
+		html += '</div>';
 	}
 	return (html);
 }
 
-function getStep3() {
-	for (i = 0; i < 4; i++) {
-		person.addExp(getValue("startDate" + i), getValue("endDate" + i), getValue("employer" + i), getValue("job" + i), getValue("skills" + i));
-	}
-}
-
 function updateStep3() {
-	for (i = 0; i < 4; i++) {
-		person.exp[i].startDate = getValue("startDate" + i);
-		person.exp[i].endDate = getValue("endDate" + i);
-		person.exp[i].employer = getValue("employer" + i);
-		person.exp[i].job = getValue("job" + i);
-		person.exp[i].skills = getValue("skills" + i);
+	for (var i = 0; i < catNum; i++) {
+		person.skillsCat[i].catName = getValue("cat" + i);
+		for (var j = 0; j < skillsNum; j++) {
+			person.skillsCat[i].skills[j].skillName = getValue("skill" + i + j);
+			person.skillsCat[i].skills[j].level = getValue("level" + i + j);
+		}
 	}
 }

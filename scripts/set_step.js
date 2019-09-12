@@ -20,30 +20,21 @@ function showDiv(id, num, bool) {
 function savePrevious(){
 	if (document.getElementById("CV"))
 		return;
-	if (document.getElementById("name")) {
-		if (!person)
-			person = getStep0();
-		else
-			updateStep0();
-	}
-	if (document.getElementById("formation0")) {
-		if (!(person.formations[0]))
-			getStep1();
-		else
-			updateStep1();
-	}
-	if (document.getElementById("job0")) {
-		if (!(person.exp[0]))
-			getStep2();
-		else
-			updateStep2();
-	}
+	if (document.getElementById("name"))
+		updateStep0();
+	if (document.getElementById("formation0"))
+		updateStep1();
+	if (document.getElementById("job0"))
+		updateStep2();
+	if (document.getElementById("skill00"))
+		updateStep3();
 }
 
 function setForm(step) {
-	html = "";
+	var html = "";
+	var style = document.getElementById("style");
+
 	savePrevious();
-	style = document.getElementById("style");
 	style.href = "style/style.css";
 	switch (step) {
 		case 0:
@@ -54,6 +45,10 @@ function setForm(step) {
 			break;
 		case 2:
 			html = setStep2();
+			break;
+		case 3:
+			html = setStep3();
+			break;
 	}
 	html += '<div id="buttons">';
 	if (step != 0)

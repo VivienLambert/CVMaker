@@ -17,12 +17,22 @@ h1, h2 {
 	text-align: center;
 }
 
+h3 {
+	margin-bottom: 1vw;
+}
+
+hr {
+	color: #87CEFA;
+}
+
 input, textarea{
 	resize: none;
-	width: 49vw;
-	background-color: #87CEFA;
-	border-style: hidden;
-	color: white;
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #D1EBFB;
+	border-style: none;
+	color: black;
 	font-size: 2.5vw;
 }
 
@@ -55,4 +65,33 @@ button {
 
 .plus {
 	margin-left: 40vw;
+}
+
+.plusTxt {
+	text-align: center;
+	font-size: 3vw;
+	width: 95%;
+	margin-top : 1vw;
+	margin-bottom: 1vw;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.block {
+	background-color: #87CEFA;
+	padding : 2vw;
+	margin-bottom: 2vw;
+}
+
+.underBlock{
+	margin-top: 2vw;
+	background-color: #00BFFF;
+	padding: 3vw;
+}
+.newButtonColor{
+	background-color: #00BFFF;
+
+}
+.newCateg{
+	margin-left: 1vw;
 }

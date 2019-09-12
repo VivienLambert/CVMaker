@@ -1,15 +1,123 @@
+@media print {
+	@page {
+		margin: 0;
+		border: none;
+		padding: 0;
+		page-break-inside: avoid;
+	}
+	html{
+		-webkit-print-color-adjust: exact;
+    	print-color-adjust: exact;
+    	background: none;
+    	width: 20.9cm;
+		height: 29.64cm;
+		overflow-y: none;
+		margin:0;
+	}
+	body{
+		margin: 0;
+		padding: 0;
+	}
+	button {
+		display: none;
+	}
+	#CV {
+		margin: 0;
+	}
+}
+html {
+	background-color: #87CEFA;
+}
+
 #CV {
-	width: 21cm;
-	height: 30cm;
-	background-color: red;
+	width: 20.9cm;
+	height: 29.64cm;
+	background-color: white;
 	display: flex;
 }
+
 #ID {
-	height: 100%;
-	width: 40%;
-	background-color: blue;
+	width: 33%;
+	color: white;
+	background-color: #222B4A;
+	padding: 5%;
 }
+
+#expCV {
+	width: 67%;
+	display: flex;
+	flex-direction: column;
+	padding: 0.5cm;
+}
+
+h1, h2 {
+	color: #D78A71;
+}
+
+#titleCV {
+	color: #222B4A;
+	text-align: center;
+}
+
+a{
+	color: white;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.titleRaw {
+	color: #222B4A;
+	font-weight: bold;
+}
+
+.place {
+	font-weight: bold;
+}
+
+#picture {
+	width: 40%;
+	margin-left: 30%;
+	margin-top: 10%;
+}
+
 .icon {
-	width : 1cm;
+	width: 1cm;
 	height: 1cm;
+}
+
+p {
+	margin-top : 0;
+	margin-bottom: 0;
+}
+
+#linked {
+	display: flex;
+	margin-left: -1cm;
+}
+
+.skillLine, #pointLine {
+	display: flex;
+	justify-content: space-between;
+}
+
+.skillPoint {
+	width : 0.2cm;
+	height: 0.2cm;
+	background-color: #9598AA;
+	border-style: hidden;
+	border-radius: 100%;
+	margin: auto;
+}
+
+.fullPoint {
+	background-color: #D78A71;
+}
+
+button {
+	background: #00BFFF;
+	border-radius: 3px;
+	border-style: hidden;
+	color: white;
+	font-size: 4vw;
+	font-weight: bold;
 }

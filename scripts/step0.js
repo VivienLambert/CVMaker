@@ -1,21 +1,18 @@
 function setStep0() {
-	html = "<h1>Bonjour, faisons connaissance !</h1>";
-	html +=	'Nom<input id="name" class="step0" type="text" value ="' + (person ? person.name : "") + '"></input><br>';
-	html +=	'Prénom<input id="firstName" class="step0" type="text" value ="' + (person ? person.firstName : "") + '"></input><br>';
-	html +=	'Locomotion (ex:"Permis B")<input id="driving" class="step0" type="text" value ="' + (person ? person.driving : "") + '"></input><br>';
-	html +=	'Adresse<input id="address" class="step0" type="text" value ="' + (person ? person.address : "") + '"></input><br>';
-	html +=	'Code postal <input id="postalCode" class="step0" type="text" value ="' + (person ? person.postalCode : "") + '"></input><br>';
-	html +=	'Ville<input id="city" class="step0" type="text" value ="' + (person ? person.city : "") + '"></input><br>';
-	html +=	'Numéro de téléphone<input id="phone" class="step0" type="text" value ="' + (person ? person.phone : "") + '"></input><br>';
-	html +=	'Adresse e-mail<input id="mail" class="step0" type="text" value ="' + (person ? person.mail : "") + '"></input><br>';
-	html +=	'LinkedIn<input id="linkedIn" class="step0" type="text" value ="' + (person ? person.linkedIn : "") + '"></input><br>';
-	html +=	'Poste désiré<input id="application" class="step0" type="text" value ="' + (person ? person.application : "") + '"></input><br>';
-	return (html);
-}
+	var html = "<h1>Bonjour, faisons connaissance !</h1>";
 
-function getStep0() {
-	return new Person(getValue("name"), getValue("firstName"), getValue("driving"), getValue("address"),
-					getValue("postalCode"), getValue("city"), getValue("phone"), getValue("mail"), getValue("linkedIn"),getValue("application"));
+	html +=	'Nom<input id="name" class="step0" type="text" value ="' + person.name + '"></input><br>';
+	html +=	'Prénom<input id="firstName" class="step0" type="text" value ="' + person.firstName + '"></input><br>';
+	html +=	'Locomotion (ex:"Permis B")<input id="driving" class="step0" type="text" value ="' + person.driving + '"></input><br>';
+	html +=	'Adresse<input id="address" class="step0" type="text" value ="' + person.address + '"></input><br>';
+	html +=	'Code postal <input id="postalCode" class="step0" type="text" value ="' + person.postalCode + '"></input><br>';
+	html +=	'Ville<input id="city" class="step0" type="text" value ="' + person.city + '"></input><br>';
+	html +=	'Numéro de téléphone<input id="phone" class="step0" type="text" value ="' + person.phone + '"></input><br>';
+	html +=	'Adresse e-mail<input id="mail" class="step0" type="text" value ="' + person.mail + '"></input><br>';
+	html +=	'LinkedIn<input id="linkedIn" class="step0" type="text" value ="' + person.linkedIn + '"></input><br>';
+	html +=	'Poste désiré<input id="application" class="step0" type="text" value ="' + person.application + '"></input><br>';
+	html +=	'URL de votre photo<input id="picture" class="step0" type="text" value ="' + person.picture + '"></input><br>';
+	return (html);
 }
 
 function updateStep0() {
@@ -29,4 +26,5 @@ function updateStep0() {
 	person.mail = getValue("mail");
 	person.linkedIn = getValue("linkedIn");
 	person.application = getValue("application");
+	person.picture = getValue("picture");
 }
