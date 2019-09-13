@@ -66,38 +66,48 @@ function printPoint(cat, skill) {
 
 function printSkills() {
 	var skillCount = person.hasSkill();
-	var html = '<div id="skills">';
-
+	var html = "";
+	var buffer = "";
+	
 	for (var i = 0; i <= skillCount[0]; i++) {
 		if (person.skillsCat[i].catName != "" && person.skillsCat[i].skills[0].skillName != "") {
-			html += '<h2>' + person.skillsCat[i].catName + '</h2>';
+			buffer += '<h2>' + person.skillsCat[i].catName + '</h2>';
 			for (var j = 0; j <= skillCount[1][i]; j++) {
 				if (person.skillsCat[i].skills[j].skillName != "") {
-					html += '<div class="skillLine">';
-					html += '<p>' + person.skillsCat[i].skills[j].skillName + '</p>';
-					html += printPoint(i, j);
-					html += '</div>';
+					buffer += '<div class="skillLine">';
+					buffer += '<p>' + person.skillsCat[i].skills[j].skillName + '</p>';
+					buffer += printPoint(i, j);
+					buffer += '</div>';
 				}
 			}
 		}
 	}
-	html += "</div>";
+	if (buffer != "") {
+		html += '<div id="skills">';
+		html += buffer;
+		html += "</div>";
+	}
 	return html;
 }
 
 function printID() {
-	var html = '<div id="ID">';
+	var html = "";
 	var coord = "";
+	var buffer = "";
 
-	html += printName();
+	buffer += printName();
 	if (person.driving != "")
-		html += '<p id="driving">' + capitalize(person.driving) + '</p>'; 
+		buffer += '<p id="driving">' + capitalize(person.driving) + '</p>'; 
 	coord = printCoord();
 	if (coord != "")
-		html += '<h2>Coordonnées</h2>';
-	html += coord;
-	html += printSkills();
-	html += '</div>';
+		buffer += '<h2>Coordonnées</h2>';
+	buffer += coord;
+	buffer += printSkills();
+	if (buffer != "") {
+		html = '<div id="ID">';
+		html += buffer;
+		html += '</div>';
+	}
 	return html;
 }
 
@@ -148,14 +158,19 @@ function printHobbies() {
 }
 
 function printExp() {
-	var html = '<div id="expCV">';
+	var html = "";
+	var buffer = "";
 	
 	if (person.application != "")
-		html += '<h1 id="titleCV">' + capitalize(person.application) + '</h1>';
-	html += printArray(person.formations, "Formations", false, true);
-	html += printArray(person.exp, "Expériences professionnelles", true);
-	html += printHobbies();
-	html += '</div>';
+		buffer += '<h1 id="titleCV">' + capitalize(person.application) + '</h1>';
+	buffer += printArray(person.formations, "Formations", false, true);
+	buffer += printArray(person.exp, "Expériences professionnelles", true);
+	buffer += printHobbies();
+	if (buffer != "") {
+		html = '<div id="expCV">';
+		html += buffer;
+		html += '</div>';
+	}
 	return html;
 }
 
@@ -164,13 +179,18 @@ function printCV() {
 
 	var page = document.getElementById("page");
 	var style = document.getElementById("style");
-
-	style.href = "style/cv.css";
+	var resume = "";
+	var html = "";
 	
-	html = '<div id="CV">';
-	html += printID();
-	html += printExp();
-	html += '</div>';
+	resume = printID() + printExp();
+	if (resume != "") {
+		style.href = "style/cv.css";
+		html = '<div id="CV">';
+		html += resume;
+		html += '</div>';
+	} else {
+		html = "Vous n'avez pas indiqué suffisamment d'éléments pour un début de CV, je vous invite à retourner au questionnaire."
+	}
 	html += '<div id="buttons">';
 	html += '<br><button id="previous" onclick="setForm(' + (stepMax) + ');">⇦</button>';
 	html += '</div>';
