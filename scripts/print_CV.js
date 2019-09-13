@@ -132,10 +132,11 @@ function printHobbies() {
 	var buffer = "";
 
 	for (var i = 0; i < person.hobbies.length; i++) {
-		if (person.hobbies[i].title)
+		if (person.hobbies[i].title != "") {
 			buffer += '<p class="titleRaw">' + capitalize(person.hobbies[i].title);
 			buffer += (person.hobbies[i].duration? "-" + person.hobbies[i].duration : "");
 			buffer += '</p><p>' + capitalize(person.hobbies[i].skills.replace(/\n/g, "<br />")) + "</p>"
+		}
 	}
 	if (buffer != "") {
 		html += '<div id="hobbies">';
