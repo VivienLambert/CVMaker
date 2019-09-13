@@ -181,8 +181,11 @@ function printCV() {
 	var style = document.getElementById("style");
 	var resume = "";
 	var html = "";
+	var id = printID();
+	var exp = printExp();
 	
-	resume = printID() + printExp();
+	if (id != "" && exp != "")
+		resume = id + exp;
 	if (resume != "") {
 		style.href = "style/cv.css";
 		html = '<div id="CV">';
