@@ -28,6 +28,8 @@ function savePrevious(){
 		updateStep2();
 	if (document.getElementById("skill00"))
 		updateStep3();
+	if (document.getElementById("hobby0"))
+		updateStep4();
 }
 
 function setForm(step) {
@@ -48,6 +50,9 @@ function setForm(step) {
 			break;
 		case 3:
 			html = setStep3();
+			break;
+		case 4:
+			html = setStep4();
 			break;
 	}
 	html += '<div id="buttons">';

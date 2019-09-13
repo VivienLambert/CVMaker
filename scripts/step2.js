@@ -6,7 +6,7 @@ function setStep2() {
 		html += '<div class="block" id="Exp' + i + '" style="display:' + (i <= person.hasExp() ? "block" : "none") + ';">'
 		html += "<h3>Expérience " + (i+1) + "</h3>"
 		html +=	'<span>Date de début</span><input id="startDate' + i + '" class="step2" type="text" value="' + person.exp[i].startDate + '"></input><br>';
-		html +=	'<span>Date de fin</span><input id="endDate' + i + '" class="step2" type="text" value="' + person.exp[i].endDate + '"></input><br>';
+		html +=	'<span>Date de fin<br />(facultative)</span><input id="endDate' + i + '" class="step2" type="text" value="' + person.exp[i].endDate + '"></input><br>';
 		html +=	'<span>Employeur</span><input id="employer' + i + '" class="step2" type="text" value="' + person.exp[i].employer + '"></input><br>';
 		html +=	'<span>Intitulé du poste</span><input id="job' + i + '" class="step2" type="text" value="' + person.exp[i].job + '"></input><br>';
 		html +=	'<span>Compétences mises en place/mission</span> (100 caractères) <textarea rows="2" cols="50" maxlength="100" id="skills' + i + '" class="step1">' + person.exp[i].skills + '</textarea><br>';

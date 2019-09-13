@@ -25,6 +25,13 @@ function Exp(startDate = "", endDate = "", employer = "", job = "", skills = "")
 	this.skills = skills;
 }
 
+function Hobby(duration = "", title = "", skills = "")
+{
+	this.duration = duration;
+	this.title = title;
+	this.skills = skills;
+}
+
 function Person(name  = "", firstName = "", driving = "", address = "", postalCode = "", city = "", phone = "", mail = "", linkedIn = "", application = "", picture = "") {
 	this.name = name;
 	this.firstName = firstName;
@@ -40,6 +47,7 @@ function Person(name  = "", firstName = "", driving = "", address = "", postalCo
 	this.formations = [];
 	this.exp = [];
 	this.skillsCat = [];
+	this.hobbies = [];
 
 	this.hasExp = function() {
 		var ret = 0;
@@ -58,6 +66,16 @@ function Person(name  = "", firstName = "", driving = "", address = "", postalCo
 		for (var i = 0; i < this.formations.length; i++) {
 			if (this.formations[i].startDate || this.formations[i].endDate
 				|| this.formations[i].school || this.formations[i].formation || this.formations[i].skills)
+				ret = i;
+		}
+		return ret;
+	}
+
+	this.hasHobby = function() {
+		var ret = 0;
+
+		for (var i = 0; i < this.hobbies.length; i++) {
+			if (this.hobbies[i].duration || this.hobbies[i].title || this.hobbies[i].skills)
 				ret = i;
 		}
 		return ret;
@@ -97,4 +115,7 @@ function Person(name  = "", firstName = "", driving = "", address = "", postalCo
 	this.addSkill = function(cat = 0, skillName = "", level = "1") {
 		this.skillsCat[cat].skills.push(new Skill(skillName, level));
 	};
+	this.addHobby = function(duration = "", title = "", skills = "") {
+		this.hobbies.push(new Hobby(duration, title, skills));
+	}
 }

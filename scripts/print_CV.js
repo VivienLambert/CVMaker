@@ -115,7 +115,7 @@ function printArray(table = [], title = "", job = false, formation = false){
 			buffer += (table[i].endDate != "" ? "-" : "") + table[i].endDate + "</td>";
 			buffer += "<td>" + capitalize(name) +"</td></tr>";
 			buffer += '<tr><td></td><td class="place">' + capitalize(place) + "</td></tr>";
-			buffer += '<tr><td></td><td>' + capitalize(table[i].skills.replace("\n", "<br />")) + "</td></tr>";
+			buffer += '<tr><td></td><td>' + capitalize(table[i].skills.replace(/\n/g, "<br />")) + "</td></tr>";
 		}
 	}
 	if (buffer != "") {
@@ -127,13 +127,33 @@ function printArray(table = [], title = "", job = false, formation = false){
 	return html;
 }
 
+function printHobbies() {
+	var html = "";
+	var buffer = "";
+
+	for (var i = 0; i < person.hobbies.length; i++) {
+		if (person.hobbies[i].title)
+			buffer += '<p class="titleRaw">' + capitalize(person.hobbies[i].title);
+			buffer += (person.hobbies[i].duration? "-" + person.hobbies[i].duration : "");
+			buffer += '</p><p>' + capitalize(person.hobbies[i].skills.replace(/\n/g, "<br />")) + "</p>"
+	}
+	if (buffer != "") {
+		html += '<div id="hobbies">';
+		html += '<h2>Centres d\'intérêts</h2><hr \\>';
+		html += buffer;
+		html += '</div>';
+	}
+	return html;
+}
+
 function printExp() {
 	var html = '<div id="expCV">';
 	
 	if (person.application != "")
 		html += '<h1 id="titleCV">' + capitalize(person.application) + '</h1>';
 	html += printArray(person.formations, "Formations", false, true);
-	html += printArray(person.exp, "Expériences professionnelles", true)
+	html += printArray(person.exp, "Expériences professionnelles", true);
+	html += printHobbies();
 	html += '</div>';
 	return html;
 }
